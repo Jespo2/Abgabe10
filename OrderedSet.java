@@ -11,35 +11,46 @@ public class OrderedSet <T extends Comparable<T>> {
     }
 
     public void insert(T type){
+
         if (arrayList.isEmpty()) {
             arrayList.add(0, type);
-        }
-        if(!arrayList.contains(type)) {
-            for (int i = 0; i < arrayList.size(); i++) { // while schleife weil sonst unendlich
+
+        }else if(!arrayList.contains(type)) {
+            int i = 0;
+            while(i<arrayList.size()){
 
                 int e = type.compareTo(arrayList.get(i));
-                if (e > 0) {
-                    arrayList.add(i, type);
 
+                if(e<0){
+                    arrayList.add(i,type);
+                    break;
                 }
+                i++;
+                if(i==arrayList.size()){
+                    arrayList.add(type);
+                    break;
+                }
+
             }
 
         }else
-                System.out.println("hab keine Exception gefunden und wollte keine eigene schreiben , naja deine Zahl gibts auf jeden Fall schon");
+            System.out.println(type + " gibts  schon in der Liste");
 
     }
     public void remove(T type){
 
-            if (arrayList.contains(type)) {
-                arrayList.remove(type);
-            }else
-                System.out.println("Gibts net");
+        if (arrayList.contains(type)) {
+            arrayList.remove(type);
+        }else
+            System.out.println("Gibts net");
 
 
     }
 
     public void uniteWith(OrderedSet liste){
-
+        for(int i = 0 ; i < liste.arrayList.size() ; i++){
+            
+        }
     }
 
 
@@ -52,4 +63,3 @@ public class OrderedSet <T extends Comparable<T>> {
 
     public boolean isSupersetOf(){return false;}
 }
-
